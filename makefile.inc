@@ -179,8 +179,10 @@ CFLAGS_RELEASE=
 CFLAGS_RELEASE_PROFILE=-fbranch-probabilities
 CFLAGS_SDL=$(SDLCONFIG_CFLAGS)
 
-CFLAGS_SSE=-msse
-CFLAGS_SSE2=-msse2
+ifeq ($(DP_MACHINE),x86_64)
+	CFLAGS_SSE=-msse
+	CFLAGS_SSE2=-msse2
+endif
 
 OPTIM_DEBUG=$(CPUOPTIMIZATIONS)
 #OPTIM_RELEASE=-O2 -fno-strict-aliasing -ffast-math -funroll-loops $(CPUOPTIMIZATIONS)
